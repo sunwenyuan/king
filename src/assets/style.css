@@ -1,0 +1,90 @@
+:root {
+    --accent-color: #ffc600;
+    --text-color: #272727;
+    --heart-active-color: red;
+}
+
+html {
+    /* border-box box model allows us to add padding and border to our elements without increasing their size */
+    box-sizing: border-box;
+    /* A system font stack so things load nice and quick! */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 10px;
+    color: var(--text-color);
+    height: 100%;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+}
+
+.nav {
+    height: 7rem;
+    font-size: 3.2rem;
+    display: grid;
+    grid-template-columns: 1fr 40rem 5rem;
+    grid-gap: 1rem;
+    border-bottom: 5px solid;
+    align-items: center;
+    padding: 0 2rem 0 2rem;
+}
+
+.nav__search input {
+    font-size: 3.2rem;
+    width: 100%;
+}
+
+.content {
+    max-width: 800px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 2rem;
+}
+
+.display-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.games-gallery {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr))
+}
+
+.game {
+    display: grid;
+    grid-template-rows: 80px 5rem;
+}
+
+.game__image {
+    font-size: 4rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.game__info {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    font-size: 2rem;
+    align-items: center;
+    justify-content: left;
+    padding: 0 1rem 0 1rem;
+}
+
+.heart-active {
+    color: var(--heart-active-color);
+}

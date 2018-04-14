@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "module": "system",
+        "moduleResolution": "node",
+        "target": "es6",
+        "sourceMap": true,
+        // "removeComments": false,
+        // "noImplicitAny": true,
+        "baseUrl": "src",
+        "noUnusedLocals": true,
+        "importHelpers": true,
+        "lib": [
+            "es2018",
+            "dom",
+            "dom.iterable"
+        ],
+    },
+    "exclude": [
+        "./src/assets"
+    ],
+    "paths": {
+        "core/*": [
+            "./core/*"
+        ]
+    }
+}
