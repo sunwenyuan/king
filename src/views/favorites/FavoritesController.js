@@ -1,4 +1,4 @@
-System.register(["tslib", "core/dom/DomUtilities", "core/actions/GetGamesAction", "core/actions/GetFavoriteGamesAction", "core/datamodel/FavoriteGames", "./FavoriteGameDivCreator", "./ConfirmDialog", "core/dom/ScrollToBottomDetector", "core/dom/elements/GameDivElement", "core/dom/SearchInputMonitor"], function (exports_1, context_1) {
+System.register(["tslib", "core/dom/DomUtilities", "core/actions/GetGamesAction", "core/actions/GetFavoriteGamesAction", "core/datamodel/FavoriteGames", "./FavoriteGameDivCreator", "./ConfirmDialog", "core/dom/ScrollToBottomDetector", "core/dom/elements/GameDivElement", "core/dom/SearchInputMonitor", "core/ServiceWorker"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     function loadGames() {
@@ -19,14 +19,7 @@ System.register(["tslib", "core/dom/DomUtilities", "core/actions/GetGamesAction"
     }
     function setup() {
         return tslib_1.__awaiter(this, void 0, void 0, function* () {
-            if ("serviceWorker" in navigator) {
-                navigator.serviceWorker.register("../ServiceWorker.js", { scope: '/views/' })
-                    .then(function (registration) {
-                    console.log("Service Worker registered with scope:", registration.scope);
-                }).catch(function (err) {
-                    console.log("Service worker registration failed:", err);
-                });
-            }
+            ServiceWorker_1.registServiceWorker();
             ScrollToBottomDetector_1.ScrollToBottomDetector.start(loadGames);
             ConfirmDialog_1.ConfirmDialog.addListeners();
             SearchInputMonitor_1.SearchInputMonitor.start(searchInputChangeHandler);
@@ -36,7 +29,7 @@ System.register(["tslib", "core/dom/DomUtilities", "core/actions/GetGamesAction"
         });
     }
     exports_1("setup", setup);
-    var tslib_1, DomUtilities_1, GetGamesAction_1, GetFavoriteGamesAction_1, FavoriteGames_1, FavoriteGameDivCreator_1, ConfirmDialog_1, ScrollToBottomDetector_1, GameDivElement_1, SearchInputMonitor_1, GamesGalleryDivId;
+    var tslib_1, DomUtilities_1, GetGamesAction_1, GetFavoriteGamesAction_1, FavoriteGames_1, FavoriteGameDivCreator_1, ConfirmDialog_1, ScrollToBottomDetector_1, GameDivElement_1, SearchInputMonitor_1, ServiceWorker_1, GamesGalleryDivId;
     return {
         setters: [
             function (tslib_1_1) {
@@ -68,6 +61,9 @@ System.register(["tslib", "core/dom/DomUtilities", "core/actions/GetGamesAction"
             },
             function (SearchInputMonitor_1_1) {
                 SearchInputMonitor_1 = SearchInputMonitor_1_1;
+            },
+            function (ServiceWorker_1_1) {
+                ServiceWorker_1 = ServiceWorker_1_1;
             }
         ],
         execute: function () {

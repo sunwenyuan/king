@@ -7,6 +7,7 @@ import { ConfirmDialog } from './ConfirmDialog';
 import { ScrollToBottomDetector } from 'core/dom/ScrollToBottomDetector';
 import { GameDivElement } from 'core/dom/elements/GameDivElement';
 import { SearchInputMonitor } from 'core/dom/SearchInputMonitor';
+import { registServiceWorker } from 'core/ServiceWorker';
 
 const GamesGalleryDivId: string = 'games-gallery-container';
 
@@ -37,14 +38,7 @@ function searchInputChangeHandler(searchStr: string) {
 
 // This method will be called immediately after the dom is ready.
 export async function setup() {
-    if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("../ServiceWorker.js", {scope: '/views/'})
-            .then(function (registration) {
-                console.log("Service Worker registered with scope:", registration.scope);
-            }).catch(function (err) {
-                console.log("Service worker registration failed:", err);
-            });
-    }
+    registServiceWorker();
     // Start scroll to bottom detector.
     ScrollToBottomDetector.start(loadGames);
     // Get confirm dialog ready.
