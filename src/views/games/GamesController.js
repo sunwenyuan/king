@@ -1,4 +1,4 @@
-System.register(["tslib", "core/dom/DomUtilities", "core/actions/GetGamesAction", "core/actions/GetFavoriteGamesAction", "core/datamodel/FavoriteGames", "./GameDivCreator", "./Overlay", "core/dom/ScrollToBottomDetector", "core/dom/elements/GameDivElement", "core/dom/SearchInputMonitor", "core/ServiceWorker"], function (exports_1, context_1) {
+System.register(["tslib", "core/dom/DomUtilities", "core/actions/GetGamesAction", "core/actions/GetFavoriteGamesAction", "core/datamodel/FavoriteGames", "./GameDivCreator", "./Overlay", "core/dom/ScrollToBottomDetector", "core/dom/elements/GameDivElement", "core/dom/SearchInputMonitor"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     function loadGames() {
@@ -19,7 +19,6 @@ System.register(["tslib", "core/dom/DomUtilities", "core/actions/GetGamesAction"
     }
     function setup() {
         return tslib_1.__awaiter(this, void 0, void 0, function* () {
-            ServiceWorker_1.registServiceWorker();
             ScrollToBottomDetector_1.ScrollToBottomDetector.start(loadGames);
             Overlay_1.Overlay.addListeners();
             SearchInputMonitor_1.SearchInputMonitor.start(searchInputChangeHandler);
@@ -29,7 +28,7 @@ System.register(["tslib", "core/dom/DomUtilities", "core/actions/GetGamesAction"
         });
     }
     exports_1("setup", setup);
-    var tslib_1, DomUtilities_1, GetGamesAction_1, GetFavoriteGamesAction_1, FavoriteGames_1, GameDivCreator_1, Overlay_1, ScrollToBottomDetector_1, GameDivElement_1, SearchInputMonitor_1, ServiceWorker_1, GamesGalleryDivId;
+    var tslib_1, DomUtilities_1, GetGamesAction_1, GetFavoriteGamesAction_1, FavoriteGames_1, GameDivCreator_1, Overlay_1, ScrollToBottomDetector_1, GameDivElement_1, SearchInputMonitor_1, GamesGalleryDivId;
     return {
         setters: [
             function (tslib_1_1) {
@@ -61,9 +60,6 @@ System.register(["tslib", "core/dom/DomUtilities", "core/actions/GetGamesAction"
             },
             function (SearchInputMonitor_1_1) {
                 SearchInputMonitor_1 = SearchInputMonitor_1_1;
-            },
-            function (ServiceWorker_1_1) {
-                ServiceWorker_1 = ServiceWorker_1_1;
             }
         ],
         execute: function () {
