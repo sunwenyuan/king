@@ -19,6 +19,14 @@ System.register(["tslib", "core/dom/DomUtilities", "core/actions/GetGamesAction"
     }
     function setup() {
         return tslib_1.__awaiter(this, void 0, void 0, function* () {
+            if ("serviceWorker" in navigator) {
+                navigator.serviceWorker.register("../ServiceWorker.js", { scope: '/views/' })
+                    .then(function (registration) {
+                    console.log("Service Worker registered with scope:", registration.scope);
+                }).catch(function (err) {
+                    console.log("Service worker registration failed:", err);
+                });
+            }
             ScrollToBottomDetector_1.ScrollToBottomDetector.start(loadGames);
             ConfirmDialog_1.ConfirmDialog.addListeners();
             SearchInputMonitor_1.SearchInputMonitor.start(searchInputChangeHandler);
