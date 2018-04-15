@@ -5,6 +5,7 @@
         "target": "es6",
         "sourceMap": true,
         "baseUrl": "src",
+        "removeComments": true,
         "noUnusedLocals": true,
         "importHelpers": true,
         "lib": [

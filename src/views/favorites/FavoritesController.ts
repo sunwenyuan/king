@@ -11,16 +11,22 @@ import { SearchInputMonitor } from 'core/dom/SearchInputMonitor';
 const GamesGalleryDivId: string = 'games-gallery-container';
 
 async function loadGames() {
+    // Get how many games rendered in current page, it will be use as start index when get games from server.
     const startIndex: number = GameDivElement.getRenderedGameNumber();
+    // Get favorite games with start index and search string.
     const games = await new GetGamesAction(
         startIndex,
         SearchInputMonitor.getSearchStr()
     ).perform(FavoriteGames.getFavorites());
+
+    // Create game tiles and append to current page.
     const gameGalleryDivElement: HTMLDivElement = <HTMLDivElement>getElementById(GamesGalleryDivId);
     games.forEach(game => {
         const gameNode = FavoriteGameDivCreator.create(game);
         gameGalleryDivElement.appendChild(gameNode);
     });
+
+    // Unlock scroll to bottom detector.
     ScrollToBottomDetector.resetIsBottom();
 }
 
@@ -29,11 +35,17 @@ function searchInputChangeHandler(searchStr: string) {
     loadGames();
 }
 
+// This method will be called immediately after the dom is ready.
 export async function setup() {
+    // Start scroll to bottom detector.
     ScrollToBottomDetector.start(loadGames);
+    // Get confirm dialog ready.
     ConfirmDialog.addListeners();
+    // Start search input field monitor.
     SearchInputMonitor.start(searchInputChangeHandler);
+    // Get favorite game short name list from server.
     const favorites = await new GetFavoriteGamesAction().perform();
     FavoriteGames.setFavorites(favorites);
+    // load games to render to current page.
     await loadGames();
 }

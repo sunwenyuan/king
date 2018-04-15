@@ -1,3 +1,11 @@
+/**
+ * Static class to check browser name.
+ * Only provide one public method to check if current browser is Safari,
+ * because this is the only check needed currently.
+ * 
+ * @export
+ * @class BrowserDetector
+ */
 export class BrowserDetector {
     private static browserName: string;
 

@@ -11,7 +11,6 @@ System.register(["core/dom/DomUtilities"], function (exports_1, context_1) {
         execute: function () {
             GameImageDivElement = class GameImageDivElement {
                 static create(game) {
-                    // Create game image element to display game icon
                     const imgUrl = `http://royal1.midasplayer.com/images/games/${game.short}/${game.short}_170x80.gif`;
                     const gameImgNode = DomUtilities_1.createElement(DomUtilities_1.ElementType.DIV, undefined, ['clickable', 'game__image', 'display-center'], [
                         { name: 'style', value: `background-image: url(${imgUrl})` },

@@ -3,7 +3,6 @@ System.register(["tslib", "core/dom/elements/GameImageDivElement", "core/dom/ele
     var __moduleName = context_1 && context_1.id;
     function gameImgElementClickHandler(event) {
         return tslib_1.__awaiter(this, void 0, void 0, function* () {
-            // event.stopPropagation();
             const short = GameImageDivElement_1.GameImageDivElement.getGameShortName(event.target);
             const games = yield new GetGamesAction_1.GetGamesAction().perform([short]);
             if (games.length === 1) {
@@ -13,7 +12,6 @@ System.register(["tslib", "core/dom/elements/GameImageDivElement", "core/dom/ele
     }
     function heartIconElementClickHandler(event) {
         return tslib_1.__awaiter(this, void 0, void 0, function* () {
-            event.stopPropagation();
             const short = HeartIconElement_1.HeartIconElement.getGameShortName(event.target);
             const games = yield new GetGamesAction_1.GetGamesAction().perform([short]);
             if (games.length === 1) {
@@ -59,13 +57,10 @@ System.register(["tslib", "core/dom/elements/GameImageDivElement", "core/dom/ele
             FavoriteGameDivCreator = class FavoriteGameDivCreator {
                 static create(game) {
                     const gameDivElement = GameDivElement_1.GameDivElement.create(game);
-                    // Create game image element
                     const gameImgElement = GameImageDivElement_1.GameImageDivElement.create(game);
                     gameImgElement.addEventListener('click', gameImgElementClickHandler);
                     const playIconelement = PlayIconElement_1.PlayIconElement.create(game);
                     gameImgElement.appendChild(playIconelement);
-                    // Create game info div.
-                    // This div will hold game name, play icon and heart icon
                     const gameInfoElement = GameInfoDivElement_1.GameInfoDivElement.create();
                     const gameNameDiv = GameNameDivElement_1.GameNameDivElement.create(game);
                     const gameOperationsDivElement = GameOperationsDivElement_1.GameOperationsDivElement.create();
@@ -74,7 +69,6 @@ System.register(["tslib", "core/dom/elements/GameImageDivElement", "core/dom/ele
                     gameOperationsDivElement.appendChild(heartIconElement);
                     gameInfoElement.appendChild(gameNameDiv);
                     gameInfoElement.appendChild(gameOperationsDivElement);
-                    // Append image and info
                     gameDivElement.appendChild(gameImgElement);
                     gameDivElement.appendChild(gameInfoElement);
                     return gameDivElement;

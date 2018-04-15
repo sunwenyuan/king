@@ -62,11 +62,8 @@ System.register(["tslib", "core/datamodel/FavoriteGames", "core/dom/elements/Gam
             GameDivCreator = class GameDivCreator {
                 static create(game) {
                     const gameDivElement = GameDivElement_1.GameDivElement.create(game);
-                    // Create game image element
                     const gameImgElement = GameImageDivElement_1.GameImageDivElement.create(game);
                     gameImgElement.addEventListener('click', gameImgElementClickHandler);
-                    // Create game info div.
-                    // This div will hold game name, play icon and heart icon
                     const gameInfoElement = GameInfoDivElement_1.GameInfoDivElement.create();
                     const gameNameDiv = GameNameDivElement_1.GameNameDivElement.create(game);
                     const gameOperationsDivElement = GameOperationsDivElement_1.GameOperationsDivElement.create();
@@ -83,7 +80,6 @@ System.register(["tslib", "core/datamodel/FavoriteGames", "core/dom/elements/Gam
                     gameOperationsDivElement.appendChild(heartIconElement);
                     gameInfoElement.appendChild(gameNameDiv);
                     gameInfoElement.appendChild(gameOperationsDivElement);
-                    // Append image and info
                     gameDivElement.appendChild(gameImgElement);
                     gameDivElement.appendChild(gameInfoElement);
                     return gameDivElement;

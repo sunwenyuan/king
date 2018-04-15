@@ -1,3 +1,4 @@
+// A static class holds user's favorite games' short names.
 export class FavoriteGames {
     private static favorites: Array<string> = [];
 

@@ -1,3 +1,7 @@
+/**
+ * Mock up.
+ * Get game short names set to favorite from server.
+ */
 export class GetFavoriteGamesAction {
     async perform(): Promise<Array<string>> {
         const favorites: Array<string> = ['eightballpool', 'nineballpool', 'briscolaking', 'chain_reaction', 'croco_loco', 'jelly_swelly', 'letter_swap', 'solitaire_swing'];

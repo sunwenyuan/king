@@ -55,14 +55,12 @@ System.register(["core/dom/DomUtilities", "core/dom/elements/HeartIconElement", 
                 static addCloseClickListener() {
                     const closeIconElement = DomUtilities_1.getElementById(CloseButtonId);
                     closeIconElement.addEventListener('click', (event) => {
-                        event.stopPropagation();
                         this.hideOverlay();
                     });
                 }
                 static addHeartClickListener() {
                     const heartIconElement = getOverlayHeartIconElement();
                     heartIconElement.addEventListener('click', (event) => {
-                        event.stopPropagation();
                         FavoriteGames_1.FavoriteGames.handleFavoriteStatusChange(this.game.short);
                         HeartIconElement_1.HeartIconElement.updateHeartStatus(this.game.short, heartIconElement);
                         HeartIconElement_1.HeartIconElement.updateHeartStatus(this.game.short, DomUtilities_1.getElementById(`heart-${this.game.short}`));
@@ -71,7 +69,6 @@ System.register(["core/dom/DomUtilities", "core/dom/elements/HeartIconElement", 
                 static addPlayClickListener() {
                     const playIconElement = getOverlayPlayIconElement();
                     playIconElement.addEventListener('click', (event) => {
-                        event.stopPropagation();
                         alert(`Game url: ${this.game.url}`);
                     });
                 }
