@@ -1,14 +1,21 @@
-System.register([], function (exports_1, context_1) {
+System.register(["core/dom/BrowserDetector"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var ScrollToBottomDetector;
+    var BrowserDetector_1, ScrollToBottomDetector;
     return {
-        setters: [],
+        setters: [
+            function (BrowserDetector_1_1) {
+                BrowserDetector_1 = BrowserDetector_1_1;
+            }
+        ],
         execute: function () {
             ScrollToBottomDetector = class ScrollToBottomDetector {
                 static start(callback) {
                     window.addEventListener('scroll', (event) => {
-                        if (document.body.scrollHeight - document.documentElement.scrollTop === document.body.clientHeight) {
+                        const scrollHeight = document.body.scrollHeight;
+                        const scrollTop = BrowserDetector_1.BrowserDetector.isSafari() ? document.body.scrollTop : document.documentElement.scrollTop;
+                        const clientHeight = document.body.clientHeight;
+                        if (scrollHeight - scrollTop === clientHeight) {
                             if (!this.isBottom) {
                                 this.isBottom = true;
                                 callback();
